@@ -8,16 +8,16 @@ function CardDetailes() {
   const params = useParams();
   const [movie, setMovie] = useState([]);
 
-  const getMovieDetaiels = async () => {
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${params.movieId}?api_key=52ef927bbeb21980cd91386a29403c78&language=ar`
-    );
-    setMovie(res.data);
-  };
-
   useEffect(() => {
+    const getMovieDetaiels = async () => {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${params.movieId}?api_key=52ef927bbeb21980cd91386a29403c78&language=ar`
+      );
+      setMovie(res.data);
+    };
+
     getMovieDetaiels();
-  }, []);
+  }, [params]);
   return (
     <div>
       <Row className="mt-4 d-flex align-items-center line pb-4">
